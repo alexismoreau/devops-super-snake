@@ -1,0 +1,4 @@
+---
+- src: bennojoy.nginx
+- src: phansible.sqlite
+- src: andrewrothstein.supervisord

@@ -1,0 +1,4 @@
+---
+workspace: /root
+hostname: myserv
+ntp_timezone: Europe/Paris
