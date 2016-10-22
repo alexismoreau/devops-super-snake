@@ -8,7 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.insert_key = false
 
   config.vm.provider :virtualbox do |v|
-      v.name = "myserv"
+    v.name = "serv"
     v.memory = 512
     v.cpus = 2
     # optimizing HTTP requests by enable NAT hosts DNS resolver
@@ -16,17 +16,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.customize ["modifyvm", :id, "--ioapic", "on"]
   end
 
-  config.vm.hostname = "myserv"
+  config.vm.hostname = "serv"
   config.vm.network :private_network, ip: "192.168.33.33"
 
   # Set the name of the VM. See: http://stackoverflow.com/a/17864388/100134
-  config.vm.define :myserv do |myserv|
+  config.vm.define :serv do |serv|
   end
 
   # Ansible provisioner.
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "provisioning/playbook.yml"
-    ansible.inventory_path = "provisioning/inventory"
+      ansible.playbook = "../Ansible/provisioning/playbook.yml"
+    ansible.inventory_path = "../Ansible/provisioning/inventory"
     ansible.sudo = true
   end
 
