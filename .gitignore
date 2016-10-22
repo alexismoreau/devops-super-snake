@@ -1,2 +1,3 @@
 Vagrant/.vagrant/*
 Vagrant.zip
+Ansible/provisioning/*.retry
