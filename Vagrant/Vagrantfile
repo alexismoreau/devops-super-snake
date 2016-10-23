@@ -1,6 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+system('ansible-galaxy install -r requirements.yml')
+
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -8,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.insert_key = false
 
   config.vm.provider :virtualbox do |v|
-    v.name = "serv"
+      v.name = "servflask"
     v.memory = 512
     v.cpus = 2
     # optimizing HTTP requests by enable NAT hosts DNS resolver
@@ -16,18 +18,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.customize ["modifyvm", :id, "--ioapic", "on"]
   end
 
-  config.vm.hostname = "serv"
+  config.vm.hostname = "servflask"
   config.vm.network :private_network, ip: "192.168.33.33"
 
   # Set the name of the VM. See: http://stackoverflow.com/a/17864388/100134
-  config.vm.define :serv do |serv|
+  config.vm.define :servflask do |servflask|
   end
 
   # Ansible provisioner.
   config.vm.provision "ansible" do |ansible|
       ansible.playbook = "../Ansible/provisioning/playbook.yml"
     ansible.inventory_path = "../Ansible/provisioning/inventory"
-    ansible.sudo = true
+      ansible.sudo = false
   end
 
 end

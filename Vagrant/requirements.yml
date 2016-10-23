@@ -1,0 +1,5 @@
+- src: debops.gunicorn
+- src: bennojoy.nginx
+- src: phansible.sqlite
+- src: andrewrothstein.supervisord
+- src: vitalk.flaskapp

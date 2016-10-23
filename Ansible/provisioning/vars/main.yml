@@ -1,4 +1,4 @@
 ---
 workspace: /root
-hostname: serv
+hostname: servflask
 ntp_timezone: Europe/Paris
