@@ -9,13 +9,11 @@ install:
   # Install Ansible.
   - pip install ansible
 
-  # Add ansible.cfg to pick up roles path.
-  - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
-  - debops.gunicorn
-  - bennojoy.nginx
-  - phansible.sqlite
-  - andrewrothstein.supervisord
-  - vitalk.flaskapp
+  - ansible-galaxy install debops.gunicornd
+  - ansible-galaxy install bennojoy.nginx
+  - ansible-galaxy install phansible.sqlite
+  - ansible-galaxy install andrewrothstein.supervisord
+  - ansible-galaxy install vitalk.flaskapp
     
 
 script:
