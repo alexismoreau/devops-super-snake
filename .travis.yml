@@ -10,12 +10,8 @@ install:
   # Install Ansible.
   - pip install ansible
 
-  - sudo ansible-galaxy install debops.gunicorn
-  - sudo ansible-galaxy install bennojoy.nginx
-  - sudo ansible-galaxy install phansible.sqlite
-  - sudo ansible-galaxy install andrewrothstein.supervisord
-  - sudo ansible-galaxy install vitalk.flaskapp
-    
+  # Add ansible.cfg to pick up roles path.
+  - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
 
 script:
   # Check the role/playbook's syntax.
