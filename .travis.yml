@@ -11,6 +11,12 @@ install:
 
   # Add ansible.cfg to pick up roles path.
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
+  - debops.gunicorn
+  - bennojoy.nginx
+  - phansible.sqlite
+  - andrewrothstein.supervisord
+  - vitalk.flaskapp
+    
 
 script:
   # Check the role/playbook's syntax.
