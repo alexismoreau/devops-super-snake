@@ -9,7 +9,7 @@ install:
   # Install Ansible.
   - pip install ansible
 
-  - ansible-galaxy install debops.gunicornd
+  - ansible-galaxy install debops.gunicorn
   - ansible-galaxy install bennojoy.nginx
   - ansible-galaxy install phansible.sqlite
   - ansible-galaxy install andrewrothstein.supervisord
