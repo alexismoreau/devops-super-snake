@@ -13,6 +13,7 @@ vagrant up
 
 To lunch the app:
 ```
+vagrant ssh
 python HelloWorld/main.py
 ```
 
