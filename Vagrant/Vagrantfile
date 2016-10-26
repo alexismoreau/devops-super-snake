@@ -1,13 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-system('ansible-galaxy install -r requirements.yml')
-
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "hashicorp/precise64"
-  config.ssh.insert_key = false
 
   config.vm.provider :virtualbox do |v|
       v.name = "servflask"
@@ -18,18 +15,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.customize ["modifyvm", :id, "--ioapic", "on"]
   end
 
-  config.vm.hostname = "servflask"
-  config.vm.network :private_network, ip: "192.168.33.33"
-
+  config.vm.network :private_network, ip: "192.168.33.15"    
+    
   # Set the name of the VM. See: http://stackoverflow.com/a/17864388/100134
   config.vm.define :servflask do |servflask|
   end
 
+    config.vm.provision "file", source: "../Flask", destination: "HelloWorld"
+    
   # Ansible provisioner.
   config.vm.provision "ansible" do |ansible|
-      ansible.playbook = "../Ansible/provisioning/playbook.yml"
-    ansible.inventory_path = "../Ansible/provisioning/inventory"
-      ansible.sudo = false
+    ansible.playbook = "../Ansible/provisioning/playbook.yml"
+    ansible.host_key_checking = false
+    ansible.verbose = "vv"
+    ansible.sudo = true
   end
-
 end
