@@ -14,5 +14,14 @@ vagrant up
 To lunch the app:
 ```
 python HelloWorld/main.py
-browse to: http://0.0.0.0:5000
+```
+
+Then browse to: 
+```
+http://0.0.0.0:5000
+```
+
+Test build on Travis : 
+```
+https://travis-ci.org/alexismoreau/devops-super-snake/builds/170870410
 ```
